@@ -74,11 +74,24 @@ class DeepLy
      * The base URL of the API endpoint
      */
     const API_BASE_URL = 'https://www.deepl.com/jsonrpc/';
+    
+    /**
+     * Array with all versions of the DeepL API that are supported
+     * by the current version of DeepLy.
+     */
+    const API_SUPPORT = [1];
 
     /**
      * Current version number
      */
     const VERSION = '2.0-alpha';
+    
+    /**
+     * The API key that we need to authenticate
+     * 
+     * @var string|null
+     */
+    protected $apiKey = null;
 
     /**
      * If true, validate that the length of a translation text
@@ -111,9 +124,13 @@ class DeepLy
 
     /**
      * DeepLy object constructor.
+     *
+     * @param string $apiKey The API key for the DeepL API
      */
-    public function __construct()
+    public function __construct(string $apiKey = null)
     {
+        $this->setApiKey($apiKey);
+        
         // Create the default protocol object. You may call setProtocol() to switch it.
         $this->protocol = new JsonRpcProtocol();
 
@@ -157,7 +174,7 @@ class DeepLy
             ]
         ];
 
-        $rawResponseData = $this->httpClient->callApi(self::API_BASE_URL, $params, self::METHOD_SPLIT);
+        $rawResponseData = $this->httpClient->callApi(self::API_BASE_URL, $params, self::METHOD_SPLIT, $this->apiKey);
 
         $responseContent = $this->protocol->processResponseData($rawResponseData);
 
@@ -305,7 +322,7 @@ class DeepLy
 
         // The API call might throw an exception but we do not want to catch it,
         // instead the caller of this method has to catch it.
-        $rawResponseData = $this->httpClient->callApi(self::API_BASE_URL, $params, self::METHOD_TRANSLATE);
+        $rawResponseData = $this->httpClient->callApi(self::API_BASE_URL, $params, self::METHOD_TRANSLATE, $this->apiKey);
 
         $responseContent = $this->protocol->processResponseData($rawResponseData);
 
@@ -486,6 +503,27 @@ class DeepLy
     public function setHttpClient(HttpClientInterface $httpClient)
     {
         $this->httpClient = $httpClient;
+    }
+    
+    /**
+     * Returns the API key of the DeepL API. Returns null if no API key has been set.
+     *
+     * @return string|null
+     */    
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+    
+    /**
+     * Set the API key of the DeepL API. If you do not have an API key please request one from DeepL.
+     *
+     * @param string $apiKey
+     */    
+    public function setApiKey(string $apiKey)
+    {
+        // TODO URL-encode the apiKey? (Most likely not here, but later on?)
+        $this->apiKey = $apiKey;
     }
 
     /**
