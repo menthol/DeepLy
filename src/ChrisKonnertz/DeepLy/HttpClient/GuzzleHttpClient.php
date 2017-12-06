@@ -57,6 +57,10 @@ class GuzzleHttpClient extends CurlHttpClient
         if (! is_string($method)) {
             throw new \InvalidArgumentException('$method has to be a string');
         }
+        
+        // TODO Assuming that the API key can be added to the payload this way.
+        // This is just assumption and needs to be verified.
+        $payload['auth_key'] = $apiKey;
 
         $jsonData = $this->protocol->createRequestData($payload, $method);
 
