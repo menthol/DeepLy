@@ -20,7 +20,7 @@ class MainClassTest extends \PHPUnit\Framework\TestCase
      */
     protected function getInstance()
     {
-        return new ChrisKonnertz\DeepLy\DeepLy('exaxmple-api-key');
+        return new ChrisKonnertz\DeepLy\DeepLy('example-api-key');
     }
 
     public function testInstancing()
