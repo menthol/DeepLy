@@ -24,10 +24,12 @@ It is possible to use this library without using Composer but then it is necessa
 
 > This library requires PHP 5.6 or higher and the cURL extension.
 
+If you do not have an API key, now is the time to get one. Vist [DeepL-com](https://deepl.com/) to request an API key.
+
 ## Usage Example
 
 ```php
-$deepLy = new ChrisKonnertz\DeepLy\DeepLy();
+$deepLy = new ChrisKonnertz\DeepLy\DeepLy('Your-API-Key');
 
 $translatedText = $deepLy->translate('Hello world!', 'DE', 'EN');
     
@@ -41,7 +43,8 @@ echo $translatedText; // Prints "Hallo Welt!"
 ```php
 use ChrisKonnertz\DeepLy\DeepLy;
 
-$deepLy = new DeepLy();
+$apiKey = 'Your-API-Key';
+$deepLy = new DeepLy($apiKey);
 
 try {
     $translatedText = $deepLy->translate('Hello world!', DeepLy::LANG_EN, DeepLy::LANG_AUTO);
@@ -173,6 +176,8 @@ This package has been heavily inspired by [node-deepls](https://github.com/pbrln
 and [deeplator](https://github.com/uinput/deeplator). Thank you for your great work! Give these implementations a try if you are coding in Node.js or Python.
 
 ## General Notes
+
+* Take a look at the official API documentation for more inforamtion: https://www.deepl.com/docs/api-reference.html
 
 * The code of this library is formatted according to the code style defined by the 
 [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) standard.
