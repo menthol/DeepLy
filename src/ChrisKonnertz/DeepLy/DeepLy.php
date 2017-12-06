@@ -127,7 +127,7 @@ class DeepLy
      *
      * @param string $apiKey The API key for the DeepL API
      */
-    public function __construct(string $apiKey)
+    public function __construct($apiKey)
     {
         $this->setApiKey($apiKey);
         
@@ -520,8 +520,12 @@ class DeepLy
      *
      * @param string $apiKey
      */    
-    public function setApiKey(string $apiKey)
+    public function setApiKey($apiKey)
     {
+        if (! is_string($apiKey)) {
+            throw new \InvalidArgumentException('The $apiKey argument has to be a string');
+        }
+        
         // TODO URL-encode the apiKey? (Most likely not here, but later on?)
         $this->apiKey = $apiKey;
     }
