@@ -78,7 +78,7 @@ class DeepLy
     /**
      * Current version number
      */
-    const VERSION = '1.5.1';
+    const VERSION = '2.0-alpha';
 
     /**
      * If true, validate that the length of a translation text
