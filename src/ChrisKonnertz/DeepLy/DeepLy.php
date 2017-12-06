@@ -89,9 +89,9 @@ class DeepLy
     /**
      * The API key that we need to authenticate
      * 
-     * @var string|null
+     * @var string
      */
-    protected $apiKey = null;
+    protected $apiKey;
 
     /**
      * If true, validate that the length of a translation text
@@ -127,7 +127,7 @@ class DeepLy
      *
      * @param string $apiKey The API key for the DeepL API
      */
-    public function __construct(string $apiKey = null)
+    public function __construct(string $apiKey)
     {
         $this->setApiKey($apiKey);
         
@@ -508,7 +508,7 @@ class DeepLy
     /**
      * Returns the API key of the DeepL API. Returns null if no API key has been set.
      *
-     * @return string|null
+     * @return string
      */    
     public function getApiKey()
     {
