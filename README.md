@@ -177,7 +177,7 @@ and [deeplator](https://github.com/uinput/deeplator). Thank you for your great w
 
 ## General Notes
 
-* Take a look at the official API documentation for more inforamtion: https://www.deepl.com/docs/api-reference.html
+* Take a look at the official API documentation for more information: https://www.deepl.com/docs/api-reference.html
 
 * The code of this library is formatted according to the code style defined by the 
 [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) standard.
