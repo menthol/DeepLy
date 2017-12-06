@@ -49,10 +49,11 @@ class CurlHttpClient implements HttpClientInterface
      * @param  string $url     The URL of the API endpoint
      * @param  array  $payload The payload of the request. Will be encoded as JSON
      * @param  string $method  The name of the method of the API call
+     * @param  string $apiKey  The valid API key for the DeepL API
      * @return string          The raw response data as string (usually contains stringified JSON)
      * @throws CallException   Throws a call exception if the call could not be executed
      */
-    public function callApi($url, array $payload, $method)
+    public function callApi($url, array $payload, $method, $apiKey)
     {
         if (! is_string($url)) {
             throw new \InvalidArgumentException('$url has to be a string');
