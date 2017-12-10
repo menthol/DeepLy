@@ -175,7 +175,9 @@ DeepL is a product from DeepL GmbH. More info: [deepl.com/publisher.html](https:
 This package has been heavily inspired by [node-deepls](https://github.com/pbrln/node-deepl)
 and [deeplator](https://github.com/uinput/deeplator). Thank you for your great work! Give these implementations a try if you are coding in Node.js or Python.
 
-## General Notes
+## Notes
+
+* If you are looking for a real-world example application that uses DeepLy, you may take a look at [Translation Factory](https://github.com/chriskonnertz/translation-factory).
 
 * Take a look at the official API documentation for more information: https://www.deepl.com/docs/api-reference.html
 
