@@ -23,7 +23,7 @@
     $to = isset($_POST['to']) ? $_POST['to'] : 'DE';
     $from = isset($_POST['from']) ? $_POST['from'] : 'auto';
 
-    $deepLy = new ChrisKonnertz\DeepLy\DeepLy();
+    $deepLy = new ChrisKonnertz\DeepLy\DeepLy('example-api-key');
 
     /**
      * Prints HTML code for a select element. Does not use htmlspecialchars() or whatsoever.

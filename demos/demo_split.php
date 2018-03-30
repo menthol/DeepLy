@@ -21,7 +21,7 @@ if (is_readable($composerAutoloader)) {
 
 $text = isset($_POST['text']) ? $_POST['text'] : null;
 
-$deepLy = new ChrisKonnertz\DeepLy\DeepLy();
+$deepLy = new ChrisKonnertz\DeepLy\DeepLy('example-api-key');
 
 ?>
 <!DOCTYPE html>

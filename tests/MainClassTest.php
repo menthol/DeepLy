@@ -12,7 +12,6 @@ if (!class_exists('\PHPUnit\Framework\TestCase')) {
  */
 class MainClassTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Creates and returns an instance of the main class
      *

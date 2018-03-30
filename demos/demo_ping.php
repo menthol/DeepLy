@@ -19,7 +19,7 @@ if (is_readable($composerAutoloader)) {
     spl_autoload_register('miniAutoloader');
 }
 
-$deepLy = new ChrisKonnertz\DeepLy\DeepLy();
+$deepLy = new ChrisKonnertz\DeepLy\DeepLy('example-api-key');
 
 $simple = (isset($_GET['simple']) and $_GET['simple'] == 1);
 
