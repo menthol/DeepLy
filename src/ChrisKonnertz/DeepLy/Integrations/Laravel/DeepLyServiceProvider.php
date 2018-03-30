@@ -12,7 +12,9 @@ class DeepLyServiceProvider extends ServiceProvider
     {
         $this->app->bind('deeply', function()
         {
-            return new DeepLy();
+            $apiKey = env('DEEPL_API_KEY');
+
+            return new DeepLy($apiKey);
         });
     }
 

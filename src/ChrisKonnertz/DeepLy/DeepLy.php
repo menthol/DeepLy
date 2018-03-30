@@ -518,6 +518,8 @@ class DeepLy
     /**
      * Set the API key of the DeepL API. If you do not have an API key please request one from DeepL.
      *
+     * @see https://www.deepl.com/pro.html
+     *
      * @param string $apiKey
      */
     public function setApiKey($apiKey)

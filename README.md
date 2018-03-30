@@ -142,8 +142,9 @@ In Laravel 5.0-5.4 you manually have to register the service provider
  `ChrisKonnertz\DeepLy\Integrations\Laravel\DeepLyServiceProvider` in the "providers" array and the facade 
  `ChrisKonnertz\DeepLy\Integrations\Laravel\DeepLyFacade` as an alias in the "aliases" array 
  in your `config/app.php` config file.
- 
- You can then access DeepLy like this: `$ping = \DeepLy::ping();`
+
+DeepLy uses `env('DEEPL_API_KEY')` to retrieve the API key so you have to set it in the environment settings.
+You can then access DeepLy like this: `$ping = \DeepLy::ping();`
  
 ## Demos
 
@@ -156,8 +157,7 @@ There are several demo scripts included in the `demos` folder:
 
 ## Request Limit
 
-There is a request limit. The threshold of this limit is unknown.
-
+There is a request limit. The threshold of this limit is specified in the quota documentation delivered to you by DeepL.
 
 ## Internals
 
@@ -176,7 +176,7 @@ There are also some exception classes, interfaces, an alternative HTTP client im
 DeepL.com has officially released their API. They offer a premium service that includes access to this API. 
 However, it is still possible to access the API without using this service at your own risk.
 
-Premium API access requires authentication with an API key. This will be supported by Deeply 2. 
+Premium API access requires authentication with an API key.
 
 ## Disclaimer
 
