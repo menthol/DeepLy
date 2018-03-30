@@ -74,7 +74,7 @@ class DeepLy
      * The base URL of the API endpoint
      */
     const API_BASE_URL = 'https://www.deepl.com/jsonrpc/';
-    
+
     /**
      * Array with all versions of the DeepL API that are supported
      * by the current version of DeepLy.
@@ -85,10 +85,10 @@ class DeepLy
      * Current version number
      */
     const VERSION = '2.0-alpha';
-    
+
     /**
      * The API key that we need to authenticate
-     * 
+     *
      * @var string
      */
     protected $apiKey;
@@ -130,7 +130,7 @@ class DeepLy
     public function __construct($apiKey)
     {
         $this->setApiKey($apiKey);
-        
+
         // Create the default protocol object. You may call setProtocol() to switch it.
         $this->protocol = new JsonRpcProtocol();
 
@@ -398,10 +398,10 @@ class DeepLy
      * This method will throw an exception if reading the file or translating fails
      * so you should wrap it in a try-catch-block.
      *
-     * @param string      $filename       The name of the file you want to translate
-     * @param string      $to             Optional: The target language, a self::LANG_<code> constant
-     * @param string|null $from           Optional: The source language, a self::LANG_<code> constant
-     * @return string|null                Returns the translated text or null if there is no translation
+     * @param string      $filename The name of the file you want to translate
+     * @param string      $to       Optional: The target language, a self::LANG_<code> constant
+     * @param string|null $from     Optional: The source language, a self::LANG_<code> constant
+     * @return string|null          Returns the translated text or null if there is no translation
      * @throws \Exception
      */
     public function translateFile($filename, $to = self::LANG_EN, $from = self::LANG_AUTO)
@@ -504,28 +504,28 @@ class DeepLy
     {
         $this->httpClient = $httpClient;
     }
-    
+
     /**
      * Returns the API key of the DeepL API. Returns null if no API key has been set.
      *
      * @return string
-     */    
+     */
     public function getApiKey()
     {
         return $this->apiKey;
     }
-    
+
     /**
      * Set the API key of the DeepL API. If you do not have an API key please request one from DeepL.
      *
      * @param string $apiKey
-     */    
+     */
     public function setApiKey($apiKey)
     {
         if (! is_string($apiKey)) {
             throw new \InvalidArgumentException('The $apiKey argument has to be a string');
         }
-        
+
         // TODO URL-encode the apiKey? (Most likely not here, but later on?)
         $this->apiKey = $apiKey;
     }

@@ -4,10 +4,10 @@
 [![Version](https://img.shields.io/packagist/v/chriskonnertz/DeepLy.svg)](https://packagist.org/packages/chriskonnertz/deeply)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chriskonnertz/deeply/master/LICENSE)
 
-
 [DeepL.com](https://www.deepl.com/) is a great, new translation service. 
 It provides better translations compared to other popular translation engines.
-DeepLy is a PHP package that implements a client to interact with DeepL via their _undocumented_ API. 
+DeepLy is a PHP package that implements a client to interact with DeepL via their _undocumented_ API and without an API key. 
+Please switch to DeepLy 2 if you have an API key.
 
 ## Installation
 
@@ -156,30 +156,46 @@ There are several demo scripts included in the `demos` folder:
 
 ## Request Limit
 
-There seems to be a request limit. Someone reported that it is 2000 requests per day but that is unconfirmed. (See also: https://github.com/chriskonnertz/DeepLy/issues/11)
+There is a request limit. The threshold of this limit is unknown.
+
+
+## Internals
+
+The "core" of this library consists of these classes:
+* `DeepLy` - main class
+* `HttpClient\CurlHttpClient` - HTTP client class
+* `Protocol\JsonRpcProtocol` - JSON RPC is the protocol used by the DeepL API
+* `ResponseBag\AbstractBag` - base wrapper class for the responses of the DeepL API
+* `ResponseBag\SentencesBag` - concrete class for API responses to "split text" requests
+* `ResponseBag\TranslationBag` - concrete class for API responses to "translate" requests
+
+There are also some exception classes, interfaces, an alternative HTTP client implementation that uses Guzzle and classes for the Laravel integration.
 
 ## Current State
 
-I do not know when DeepL.com will officially release their API but I expect them to do it within the next weeks. 
-Meanwhile you may use this PHP client on your own risk. Also note that their API responds quite slow. This might be intentional.
-Nevertheless the API is reliable. I had not a single faling call amongst hundreds of API calls.
+DeepL.com has officially released their API. They offer a premium service that includes access to this API. 
+However, it is still possible to access the API without using this service at your own risk.
+
+Premium API access requires authentication with an API key. This will be supported by Deeply 2. 
 
 ## Disclaimer
 
 This is not an official package. It is 100% open source and non-commercial. 
-The API of DeepL.com is free as well but this [might](https://www.heise.de/newsticker/meldung/Maschinelles-Uebersetzen-Deutsches-Start-up-DeepL-will-230-Sprachkombinationen-unterstuetzen-3836533.html) change in the future.
-It remains unclear what this exactly means.
+The API of DeepL.com can be accessed without an API key but this might change in the future.
 
-DeepL is a product from DeepL GmbH. More info: [deepl.com/publisher.html](https://www.deepl.com/publisher.html)
+DeepL is a product of DeepL GmbH. More info: [deepl.com/publisher.html](https://www.deepl.com/publisher.html)
 
 This package has been heavily inspired by [node-deepls](https://github.com/pbrln/node-deepl)
-and [deeplator](https://github.com/uinput/deeplator). Thank you for your great work! Give these implementations a try if you are coding in Node.js or Python.
+and [deeplator](https://github.com/uinput/deeplator). Thank you for your great work! 
+Give these implementations a try if you are coding in Node.js or Python.
 
 ## Notes
 
-* If you are looking for a real-world example application that uses DeepLy, you may take a look at [Translation Factory](https://github.com/chriskonnertz/translation-factory).
+* Texts have to be UTF8-encoded.
 
 * Take a look at the official API documentation for more information: https://www.deepl.com/docs/api-reference.html
+
+* If you are looking for a real-world example application that uses DeepLy, you may take a look at [Translation Factory](https://github.com/chriskonnertz/translation-factory).
 
 * The code of this library is formatted according to the code style defined by the 
 [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) standard.

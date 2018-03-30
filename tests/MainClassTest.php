@@ -153,9 +153,10 @@ class MainClassTest extends \PHPUnit\Framework\TestCase
         // Unfortunately the result tends to alter.
         $expectedProposals = [           
             'Der alte Mann und das Meer',
+            'Der alte Mann am Meer',
             'Der Alte und das Meer',
             'Der alte Mann und die See',
-            'Der alte Mann am Meer',
+            'Der alte Mann an der See',
         ];
 
         $this->assertEquals($expectedProposals, $proposals);
@@ -180,7 +181,7 @@ class MainClassTest extends \PHPUnit\Framework\TestCase
             'Mir geht es gut. Ich habe viel Spaß beim Programmieren.';
         $translated = $deepLy->translate($text, 'EN', 'DE');
 
-        $expectedTranslated = 'Hello, world. How are you feeling?'.PHP_EOL.PHP_EOL.
+        $expectedTranslated = 'Hello world. How are you doing?'.PHP_EOL.PHP_EOL.
             'I\'m all right. I have a lot of fun programming.';
         $this->assertEquals($expectedTranslated, $translated);
     }
