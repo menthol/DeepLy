@@ -73,7 +73,7 @@ class DeepLy
     /**
      * The base URL of the API endpoint
      */
-    const API_BASE_URL = 'https://www.deepl.com/jsonrpc/';
+    const API_BASE_URL = 'https://api.deepl.com/v2/usage';
 
     /**
      * Array with all versions of the DeepL API that are supported
